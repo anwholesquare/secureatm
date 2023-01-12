@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ATM System Login: Input Pin</title>
+    <meta name="description" content="ATM"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link href="dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/flat-ui.css" rel="stylesheet">
+    <link href="docs/assets/css/demo.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico">
+  </head>
+  <body>
+    
+    <div id="faceio-modal"></div>
+    <div class="content">
+        <!-- PIN INPUT -->
+        <div class="col-xs-12 text-center" id = "logo">
+
+            <img src="logo.png" width="160px" height="60px">
+        </div>
+        <div class="row hide" id = "fingerprint">
+            <div class="col-xs-12 text-center">
+                <h1 class="text-center" style="font-size: 20px;">Proceed for your fingerprint verification</h1> 
+                <div id="confirmPin">
+                    <a href="#" class="btn btn-block btn-lg btn-success text-uppercase" onclick="fingerPrintVerify()">PROCEED</a>
+                  </div>
+            </div>
+            
+        </div>
+
+        <div class="row hide" id ="face">
+            <div class="col-xs-12 text-center">
+                <h1 class="text-center" style="font-size: 20px;">Proceed for your face verification</h1> 
+                <div id="confirmPin">
+                    <a href="#" class="btn btn-block btn-lg btn-success text-uppercase" onclick="authenticateUser()">PROCEED</a>
+                  </div>
+            </div>
+            
+        </div>
+
+
+        <div class="row" id="first">
+          <div class="col-xs-12 text-center">
+              <h1 class="text-center" style="font-size: 20px;">Enter your card no: </h1> 
+              <input type="text" id="userCardInput" class="form-control" style="margin: 10px 0 10px 0px;text-align: center;"/>
+              <div id="confirmPin">
+                  <a href="#" class="btn btn-block btn-lg btn-success text-uppercase" onclick="start()" >PROCEED</a>
+                </div>
+          </div>
+          
+      </div>
+
+
+        <div class="row hide" id="last">
+            <div class="col-xs-12 text-center">
+                <h1 class="text-center" style="font-size: 20px;">We have verified your profile.<br> Please collect your withdrawal.</h1> 
+                <div id="confirmPin">
+                    <a href="#" class="btn btn-block btn-lg btn-success text-uppercase" onclick="logout()">GO BACK</a>
+                  </div> 
+            </div>
+            
+        </div>
+
+        <div class="row hide" id="notverify">
+            <div class="col-xs-12 text-center">
+                <h1 class="text-center" style="font-size: 20px;">We can't verify your profile.<br> Please remove your card.</h1> 
+                <div id="confirmPin">
+                    <a href="#" class="btn btn-block btn-lg btn-danger text-uppercase" onclick="removeCard()">Remove cards</a>
+                  </div>
+            </div>
+            
+        </div>
+        
+        <div class="row hide" id="PIN">
+            <div class="col-xs-12" id="">
+    
+             
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  
+                  <h1 class="text-center" style="font-size: 25px;" >Input Your Pin Number</h1>
+                  <div id="pinPad">
+                    <input type="text" id="userPinInput" class="form-control" disabled style="margin: 10px 0 10px 0px; text-align: center; font-size: 25px; color: black;"/>
+                    <table>
+                      <tr>
+                        <td><a id="btn1" href="#" class="btn btn-block btn-lg btn-inverse" onclick="pinClick('1')">1</a></td>
+                        <td><a id="btn2" href="#" class="btn btn-block btn-lg btn-inverse" onclick="pinClick('2')">2</a></td>
+                        <td><a id="btn3" href="#" class="btn btn-block btn-lg btn-inverse" onclick="pinClick('3')">3</a></td>
+                      </tr>
+                      <tr>
+                        <td><a id="btn4" href="#" class="btn btn-block btn-lg btn-inverse" onclick="pinClick('4')">4</a></td>
+                        <td><a id="btn5" href="#" class="btn btn-block btn-lg btn-inverse" onclick="pinClick('5')">5</a></td>
+                        <td><a id="btn6" href="#" class="btn btn-block btn-lg btn-inverse" onclick="pinClick('6')">6</a></td>
+                      </tr>
+                      <tr>
+                        <td><a id="btn7" href="#" class="btn btn-block btn-lg btn-inverse" onclick="pinClick('7')">7</a></td>
+                        <td><a id="btn8" href="#" class="btn btn-block btn-lg btn-inverse" onclick="pinClick('8')">8</a></td>
+                        <td><a id="btn9" href="#" class="btn btn-block btn-lg btn-inverse" onclick="pinClick('9')">9</a></td>
+                      </tr>
+                      <tr>
+                        <td><a id="btn0" href="#" class="btn btn-block btn-lg btn-inverse" onclick="pinClick('0')">0</a></td>
+                        <td colspan="2"><a id="btnClear" href="#" class="btn btn-block btn-lg btn-default text-uppercase" onclick="clearPIN()">Clear</a></td>
+                        
+                      </tr>
+                    </table>
+                    <div id="confirmPin">
+                        <a href="#" class="btn btn-block btn-lg btn-success text-uppercase" onclick="PINvalidity()">Confirm</a>
+                      </div>
+                  </div><!-- // Pin Pad -->
+                  
+                 
+                </div> 
+    
+    
+                
+    
+                
+              </div><!-- // END login screen  -->
+            </div><!--  // END column-->
+          
+        </div>
+
+        <!-- ACCOUNT DETAILS -->
+        <div class="row hide" id ="accountDetails">
+
+            <div class="col-xs-12" id="screenView">
+              <!-- Place <h1></h1> below -->
+              <h1 class="demo-section-title text-center" style="font-size: 25px;">account details</h1>
+              <h6 class="text-center" id = "card_no" style="font-size: 14px;">###-####-5456</h6>
+              <div class="tile">
+                <h4 class="text-uppercase" id = "balance"><span>Balance</span>1,103,500.32 BDT</h4>
+               </div>
+              <br />
+               <div class="row">
+    
+                <!-- 3/4 -->
+                <!-- Balance -->
+              
+               
+                <div class="col-xs-6" onclick="window.print();">
+                    <div class="tile">
+                      <img src="https://cdn-icons-png.flaticon.com/512/839/839184.png" alt="Make a Deposit" class="big-illustration icon">
+                      <h3 style="font-size: 14px; font-family: 'League Spartan', sans-serif;" >Print</h3>
+                    </div>
+                  </div>
+  
+                  <div class="col-xs-6" onclick="withdraw ()">
+                    <div class="tile">
+                      <img src="https://cdn-icons-png.flaticon.com/512/2676/2676606.png" alt="Withdraw Funds" class="icon">
+                      <h3 style="font-size: 14px; font-family: 'League Spartan', sans-serif;">Withdrawl</h3>
+                    </div>
+                  </div>
+
+                  <div class="col-xs-12">
+                    <div class="tile">
+                     <a id="logout" href="#" class="btn btn-lg btn-danger text-uppercase btn-padding" onclick="logout()"><span class="fui-user" ></span> Logout</a>
+                    </div>
+                    </div>
+                  </div>
+      
+    
+      
+          </div> <!-- // END OPTIONS-->
+    
+
+      </div>
+
+        <!-- WITHDRAW AMOUNTS -->
+      <div class="row hide" id="withdrawal">
+        <div class="col-xs-12" id="">
+
+         
+          <div class="row">
+            <div class="col-xs-12 text-center">
+              
+              <h1 class="text-center" style="width: 290px;font-size: 20px;">Input multiple of 500 BDT</h1>
+              <div>
+                <input type="text" id="moneyamount" class="form-control" style="margin: 10px 0 10px 0px; font-size: 20px; color: black; text-align: center;"/>
+                <div id="confirmPin">
+                    <a href="#" class="btn btn-block btn-lg btn-success text-uppercase" onclick="withdrawBalance()">Confirm</a>
+                  </div>
+                  <div style="margin: 10px 0 10px 0;">
+                    <a href="#" class="btn btn-block btn-lg btn-danger text-uppercase" onclick="scenechanger('withdrawal','accountDetails');">Go Back</a>
+                  </div>
+              </div><!-- // Pin Pad -->
+              
+             
+            </div> 
+
+
+            
+
+            
+          </div><!-- // END login screen  -->
+        </div><!--  // END column-->
+      
+    </div>
+    </div>
+
+    <script>
+      let PIN = "";
+      let id = 0;
+      let card_no = "";
+      let balance = "";
+      let face_id = "";
+      let fingerprint_id  = "";
+      let fingerprintByPass = 1;
+      let withdrawalAmount = 0;
+      
+      
+        async function start() {
+          card_no = document.getElementById("userCardInput").value;
+          var url = "https://khandokeranan.com/projects/atmface/authenticate.php?card=" + card_no ;
+
+          let response = await fetch(url);
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          let text = await response.text();
+          if (text.length == "0") {
+            scenechanger("first", "notverify");
+          }else {
+            id = text;
+            scenechanger("first", "PIN");
+          }
+        }
+
+        function scenechanger (u, v)  {
+            let a = document.getElementById(u);
+            let b = document.getElementById(v);
+            a.classList.add("hide");
+            b.classList.remove("hide");
+        }
+
+        function removeCard () {
+          scenechanger("notverify", "first");
+        }
+
+        function clearPIN () {
+          PIN = "";
+          let a = document.getElementById("userPinInput");
+          a.value = PIN;
+        }
+
+        function pinClick(digit) {
+          if (PIN.length < 4) {
+            PIN += digit;
+            let a = document.getElementById("userPinInput");
+            a.value = PIN;
+          }
+
+        }
+
+        async function PINvalidity () {
+          var url = "https://khandokeranan.com/projects/atmface/pincheck.php?id=" + id + "&pin=" + PIN;
+
+          let response = await fetch(url);
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          let text = await response.text();
+          if (text == "") {
+            scenechanger("PIN", "notverify");
+          }else {
+            balance = text;
+            scenechanger("PIN", "accountDetails");
+            let a = document.getElementById("card_no");
+            let b = document.getElementById("balance");
+            a.innerHTML = card_no;
+            b.innerHTML = "<span><pre> Available Balance </pre></span >" +  balance + " BDT";
+          }
+        }
+
+        function withdraw () {
+          scenechanger("accountDetails", "withdrawal");
+        }
+
+        function withdrawBalance () {
+
+            let money = document.getElementById("moneyamount").value;
+            let intMoney = parseFloat(money);
+            let intBalance = parseFloat(balance);
+            if (intMoney % 500 != 0) {
+              alert("Amount isn't multiple of 500 BDT");
+            }
+            else if (intMoney <= intBalance) {
+              withdrawalAmount = intMoney;
+              scenechanger("withdrawal", "face");
+              alert("Withdrawal fund: " + intMoney +  "\n" +  "Available funds: " + intBalance);
+            }else {
+              alert("Something went wrong. Insufficient funds.");
+            }
+
+        }
+
+
+    </script>
+
+
+    <script src="https://cdn.faceio.net/fio.js"></script>
+    <script type="text/javascript">
+        // Instantiate fio.js with your application Public ID
+        const faceio = new faceIO("fioa3fb2");
+        function authenticateUser(){
+            document.getElementById("face").classList.add("hide");
+            document.getElementById("logo").classList.add("hide");
+           // Authenticate a previously enrolled user
+            faceio.authenticate({
+                "locale": "auto" // Default user locale
+            }).then(userData => {
+                
+                // Grab the facial ID linked to this particular user which will be same
+                // for each of his successful future authentication. FACEIO recommend 
+                // that your rely on this Facial ID if you plan to uniquely identify 
+                // all enrolled users on your backend for example.
+               // console.log("Linked facial Id: " + userData.facialId)
+                document.getElementById("logo").classList.remove("hide");
+                face_id = userData.facialId;
+                verifyFace();
+                // Grab the arbitrary data you have already linked (if any) to this particular user
+                // during his enrollment via the payload parameter of the enroll() method.
+                //console.log("Payload: " + JSON.stringify(userData.payload)) 
+                // {"whoami": 123456, "email": "john.doe@example.com"} set via enroll()
+            }).catch(errCode => {
+              document.getElementById("logo").classList.remove("hide");
+              scenechanger("face", "notverify");
+            })
+        }
+
+        async function verifyFace () {
+          card_no = document.getElementById("userCardInput").value;
+          var url = "https://khandokeranan.com/projects/atmface/faceid.php?id=" + id + "&face=" + face_id ;
+          let response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          let text = await response.text();
+          if (text == "0") {
+              scenechanger("face", "notverify");
+          }else {
+              scenechanger("face", "fingerprint");            
+          }
+        }
+
+        async function fingerPrintVerify() {
+            if (fingerprintByPass == 1) {
+              alert("fingerprint verification is bypassed by system variable.");
+
+              var url = "https://khandokeranan.com/projects/atmface/transaction.php?card=" + card_no + "&amount=" + withdrawalAmount;
+
+              let response = await fetch(url);
+
+              if (!response.ok) {
+                alert("Something went wrong! Please refresh the browser.");
+                scenechanger("fingerprint", "notverify");
+              }else {
+                let text = await response.text();
+                let newbalance = parseInt(balance) - parseInt(withdrawalAmount);
+                if (text == newbalance.toString()) {
+                  alert("Transaction successful");
+                  scenechanger("fingerprint", "last");
+                }else {
+                  scenechanger("fingerprint", "notverify");
+                }
+                
+              }
+            }else {
+              alert("Your device is not supported for fingerprint verification.");
+              scenechanger("fingerprint", "notverify");
+            }
+        }
+
+        function logout () {
+          scenechanger("fingerprint", "first");
+          scenechanger("face", "first");
+          scenechanger("accountDetails", "first");
+          scenechanger("withdrawal", "first");
+          scenechanger("PIN", "first");
+          scenechanger("last", "first");
+          PIN = "";
+          clearPIN();
+          document.getElementById("userCardInput").value = "";
+          id = 0;
+          card_no = "";
+          balance = "";
+          face_id = "";
+          fingerprint_id  = "";
+          withdrawalAmount = 0;
+        }
+    </script>
+    
+    
+  
+   
+      
+    
+  </body>
+</html>
